@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Lora:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans-current, "Inter", ui-sans-serif, system-ui, sans-serif);
+  --font-display: var(--font-display-current, "Playfair Display", serif);
+  --font-mono: "JetBrains Mono", monospace;
+  
+  /* Custom branding colors */
+  --color-brand-green: #1B4332;
+  --color-brand-green-mid: #2D6A4F;
+  --color-brand-green-lit: #52B788;
+  --color-brand-accent: #FFD166;
+}
+
+:root {
+  --font-sans-current: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display-current: "Playfair Display", serif;
+
+  /* Canvas */
+  --c-bg: #0B0F19; /* Deep space */
+  --c-surface: #111827; /* Cards, panels */
+  --c-surface-2: #1A2235;
+
+  /* Glass System */
+  --c-glass: rgba(255, 255, 255, 0.03);
+  --c-glass-hover: rgba(255, 255, 255, 0.07);
+  --c-glass-border: rgba(255, 255, 255, 0.06);
+  --c-glass-glow: rgba(255, 209, 102, 0.1);
+
+  /* Accent Branding */
+  --c-accent: #FFD166; /* Amber gold */
+  --c-accent-glow: rgba(255, 209, 102, 0.15);
+
+  /* Text colors */
+  --c-text: #EAEAEA;
+  --c-text-muted: #9CA3AF;
+  --c-text-faint: #4B5563;
+
+  /* Type badges */
+  --c-gem: #FFD166;
+  --c-famous: #52B788;
+
+  /* Shadows */
+  --shadow-md: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 25px rgba(255, 209, 102, 0.08);
+}
+
+:root[data-typography="luxury"] {
+  --font-display-current: "Playfair Display", serif;
+  --font-sans-current: "Inter", sans-serif;
+}
+
+:root[data-typography="modern"] {
+  --font-display-current: "Montserrat", sans-serif;
+  --font-sans-current: "Open Sans", sans-serif;
+}
+
+:root[data-typography="eco"] {
+  --font-display-current: "Lora", serif;
+  --font-sans-current: "Lato", sans-serif;
+}
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Glassmorphic utilities */
+.glass {
+  background: var(--c-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--c-glass-border);
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-hover:hover {
+  background: var(--c-glass-hover);
+  border-color: rgba(255, 209, 102, 0.25);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+/* Shimmer animation for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #1A2235 25%, #273149 50%, #1A2235 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite linear;
+}
+
+/* Custom Scrollbar for a premium look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1F2937;
+  border-radius: 4px;
+  border: 2px solid #0B0F19;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Masonry layout column rules */
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1.5rem;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
+@media (min-width: 1280px) {
+  .masonry-grid {
+    column-count: 4;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  width: 100%;
+}
+

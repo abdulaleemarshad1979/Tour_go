@@ -1,0 +1,6 @@
+{
+  "name": "TourGo",
+  "description": "Travel place intelligence deck driven by real-time Gemini scrapers and dynamic Unsplash imagery",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
